@@ -41,7 +41,7 @@ def send_email(subject, body):
     msg["To"] = Kanish Tuteja
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(kanishtuteja@gmail.com, kxzt ciyf qtch yssl)
+        server.login("kanishtuteja@gmail.com", "kxzt ciyf qtch yssl")
         server.send_message(msg)
 
     print(f"[{now()}] ✅ Email sent!")

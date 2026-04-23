@@ -37,8 +37,8 @@ def get_slots(page):
 def send_email(subject, body):
     msg = MIMEText(body)
     msg["Subject"] = subject
-    msg["From"] = TCF
-    msg["To"] = Kanish Tuteja
+    msg["From"] ="kanishtuteja@gmail.com"
+    msg["To"] = "kanishtuteja@gmail.com"
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login("kanishtuteja@gmail.com", "kxzt ciyf qtch yssl")

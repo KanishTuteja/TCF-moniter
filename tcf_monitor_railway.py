@@ -29,26 +29,19 @@ CHECK_EVERY_MINUTES = 1
 
 
 def get_slots(page):
-    """Return the text content of the TCF Canada slot sections."""
-    page.goto(URL, timeout=30000)
-    page.wait_for_load_state("networkidle", timeout=15000)
-
-    # Grab both E-TCF and P-TCF sections
-    content = page.locator("text=E-TCF Canada, text=P-TCF Canada").all_text_contents()
-
-    # Broader fallback — grab the whole exam section
-    full_text = page.locator("main, #main, .content, article").first.inner_text()
-    return full_text
+    page.goto(URL, timeout=60000)
+    page.wait_for_timeout(5000)  # wait 5 seconds for JS to load
+    return page.content()
 
 
 def send_email(subject, body):
     msg = MIMEText(body)
     msg["Subject"] = subject
-    msg["From"] = GMAIL_ADDRESS
-    msg["To"] = YOUR_EMAIL
+    msg["From"] = TCF
+    msg["To"] = Kanish Tuteja
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(GMAIL_ADDRESS, GMAIL_APP_PASSWORD)
+        server.login(kanishtuteja@gmail.com, kxzt ciyf qtch yssl)
         server.send_message(msg)
 
     print(f"[{now()}] ✅ Email sent!")

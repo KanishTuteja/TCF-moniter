@@ -25,12 +25,10 @@ def get_slots(page):
     page.goto(URL, timeout=60000)
     page.wait_for_timeout(5000)
 
-    # Try to get just the registrations section
     try:
         slots = page.locator("text=Registrations").locator("..").inner_text(timeout=10000)
         return slots
     except:
-        # Fallback — look for date tables
         try:
             slots = page.locator("table").all_inner_texts()
             return " | ".join(slots)
@@ -50,7 +48,7 @@ def send_notification(message):
             },
             timeout=10
         )
-        print(f"[{now()}] ✅ Notification sent!")
+        print(f"[{now()}] Notification sent!")
     except Exception as e:
         print(f"[{now()}] Failed to send notification: {e}")
 
@@ -83,7 +81,7 @@ def main():
                     print(f"Current slots: {current[:200]}\n")
 
                 elif current != last_snapshot:
-                    print(f"[{now()}] ⚠️ CHANGE DETECTED — sending notification!")
+                    print(f"[{now()}] CHANGE DETECTED — sending notification!")
                     send_notification(
                         f"A slot change was detected on the TCF Canada page! Check now: {URL}"
                     )
